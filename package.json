@@ -1,0 +1,56 @@
+{
+  "name": "mytest-app",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@version/react-router-v3": "^1.0.0",
+    "add": "^2.0.6",
+    "auth0-js": "^9.10.4",
+    "axios": "^0.18.0",
+    "bootstrap": "^4.0.0-alpha.6",
+    "ciqu-react-calendar": "^1.0.2",
+    "cors": "^2.8.5",
+    "jwt-decode": "^2.2.0",
+    "material-ui": "^0.20.2",
+    "react": "^16.8.6",
+    "react-addons-css-transition-group": "^15.6.2",
+    "react-addons-transition-group": "^15.6.2",
+    "react-awesome-modal": "^2.0.5",
+    "react-buttons": "0.0.11",
+    "react-collapsible": "^2.6.0",
+    "react-data-export": "^0.5.0",
+    "react-datetime": "^2.16.3",
+    "react-dom": "^16.8.6",
+    "react-html-table-to-excel": "^2.0.0",
+    "react-infinite-calendar": "^2.3.1",
+    "react-js-pagination": "^3.0.2",
+    "react-loader": "^2.4.5",
+    "react-radios": "^1.1.0",
+    "react-router-dom": "^5.0.0",
+    "react-scripts": "3.0.0",
+    "react-tap-event-plugin": "^3.0.3",
+    "react-toasts": "^3.0.3",
+    "reactstrap": "^8.0.0"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}
