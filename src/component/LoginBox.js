@@ -120,7 +120,7 @@ class LoginBox extends React.Component {
     render() {
         return (
             <div className="table-responsive">
-                <h1>Login Details..Madhu</h1>
+                <h1>Login Details..</h1>
                 <form id="form">
                     <div className="form-group">
                         <label>
