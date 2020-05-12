@@ -120,7 +120,7 @@ class LoginBox extends React.Component {
     render() {
         return (
             <div className="table-responsive">
-                <h1>Login Details..Madhu</h1>
+                <h1>Login Details..</h1>
                 <form id="form">
                     <div className="form-group">
                         <label>
@@ -132,7 +132,7 @@ class LoginBox extends React.Component {
                     </div>
                     <div className="form-group">
                         <label>
-                            Pwd:
+                            Pwdaa:
                         <input className="form-control" value={this.state.fields.pwd} type="password" name="pwd" onChange={this.handleChange.bind(this)} />
                         </label>
                         <span style={{ color: "red" }}>{this.state.errors["pwd"]}</span>
