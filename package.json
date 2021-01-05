@@ -6,7 +6,7 @@
     "@version/react-router-v3": "^1.0.0",
     "add": "^2.0.6",
     "auth0-js": "^9.10.4",
-    "axios": "^0.18.0",
+    "axios": "^0.21.1",
     "bootstrap": "^4.0.0-alpha.6",
     "ciqu-react-calendar": "^1.0.2",
     "cors": "^2.8.5",
