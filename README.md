@@ -1,68 +1,141 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<!DOCTYPE html>
+<html ng-app="myapp">
 
-## Available Scripts
+<head>
+    <title>This is Sample application</title>
+</head>
 
-In the project directory, you can run:
+<body ng-controller="searchcontroller">
+    <h2>Student Details</h2>
+    <form>
+        <div class="col-sm-6">
+            <div ng-include="'src/app/search/views/seach.html'"></div>
+        </div>
+        <div class="col-sm-6">
+            <div ng-include="'src/app/search/views/seach.html'"></div>
+        </div>
+        <!-- {{hex}} -->
+    </form>
+    <!-- <div ng-include="'table.html'"></div> -->
+</body>
+<script type="text/javascript" src="node_modules/angular/angular.js"></script>
+<script type="text/javascript" src="src/app/search/controllers/searchController.js"></script>
+<script type="text/javascript" src="src/app/search/services/searchService.js"></script>
 
-### `npm start`
+<script type="text/javascript" src="app.js"></script>
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+<!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous"> -->
+<style>  
+    li{  
+         cursor:pointer;  
+    }  
+    li:hover  
+    {  
+         background-color:#f9f9f9;  
+    }  
+    </style>  
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+</html>
+--------------------------------------
+<div class="container" style="width:500px;">
+    <h3 align="center">AngularJS Tutorial - Make Autocomplete Textbox</h3>
+    <div>
+        <label>Enter Country Name</label>
+        <input type="text" name="country" id="country" ng-model="country" ng-keyup="complete(country)"
+            class="form-control" />
+        <ul class="list-group" ng-model="hidethis" ng-hide="hidethis">
+            <li class="list-group-item" ng-repeat="countrydata in filterCountry" ng-click="fillTextbox(countrydata)">
+                {{countrydata}}</li>
+        </ul>
+    </div>
+</div>
+-----------------
+//var app = angular.module('myapp', []);
+app.factory('demo', function() {
+  this.myFunc = function (x) {
+     return x.toString(8);
+   }
+});
 
-### `npm test`
+app.factory('random', function() {
+    var randomObject = {};
+    var number = Math.floor(Math.random() * 100);
+    randomObject.generate = function() {
+        return number;
+    };
+    return randomObject;
+});
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+app.factory('stadtMobilRates', function($http) {
+    var promise = null;
+  
+    return function() {
+      if (promise) {
+        // If we've already asked for this data once,
+        // return the promise that already exists.
+        return promise;
+      } else {
+        promise = $http.get('src/app/search/services/data.json');
+        return promise;
+      }
+    };
+   });
+   -----------------------
+   {  
+    "employee": [
+    {  
+        "name":       "madhu",   
+        "salary":      3500 
+    } ,
+    {  
+        "name":       "sudhan",   
+        "salary":      5500  
+    },
+    {  
+        "name":       "manne",   
+        "salary":      6500   
+    }
+ ]
+}  
+----------------------
+var app = angular.module("myapp",[]);  
+    app.controller('searchcontroller', ['$scope', 'random', 'stadtMobilRates', function($scope, random, stadtMobilRates) {
+    stadtMobilRates().then(function(data) {
+        $scope.countryList = data.data.employee;
+      });
+     $scope.complete = function(string){  
+          $scope.hidethis = false;  
+          var output = [];  
+          angular.forEach($scope.countryList, function(country){  
+               if(country.name.toLowerCase().indexOf(string.toLowerCase()) >= 0)  
+               {  
+                    output.push(country.name);  
+               }  
+          });  
+          $scope.filterCountry = output;  
+     }  
+     $scope.fillTextbox = function(string){  
+          $scope.country = string;  
+          $scope.hidethis = true;  
+     } 
+   
+}]);  
 
-### `npm run build`
-
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+-----------------------
+{
+  "name": "angularjs",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "live-server"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "angular": "^1.8.2",
+    "live-server": "^1.2.1"
+  }
+}
